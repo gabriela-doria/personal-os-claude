@@ -99,4 +99,4 @@ Tool-level lessons (connector limits, API quirks): [lessons.md](lessons.md).
 
 ---
 
-Built by [Gabriela Dória](https://github.com/gabrielavsdoria) · Environmental Engineering, Poli-USP
+Built by [Gabriela Dória](https://github.com/gabriela-doria) · Environmental Engineering, Poli-USP

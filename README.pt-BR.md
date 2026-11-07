@@ -130,4 +130,4 @@ Esta é uma **vitrine**, não uma cópia do sistema real. Veja [PRIVACY.md](PRIV
 
 ---
 
-Feito por [Gabriela Dória](https://github.com/gabrielavsdoria) · Engenharia Ambiental, Poli-USP · Código sob licença [MIT](LICENSE) · textos sob [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.pt_BR)
+Feito por [Gabriela Dória](https://github.com/gabriela-doria) · Engenharia Ambiental, Poli-USP · Código sob licença [MIT](LICENSE) · textos sob [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.pt_BR)

@@ -99,4 +99,4 @@ Aprendizados sobre os limites das ferramentas (conectores, APIs): [lessons.md](l
 
 ---
 
-Feito por [Gabriela Dória](https://github.com/gabrielavsdoria) · Engenharia Ambiental, Poli-USP
+Feito por [Gabriela Dória](https://github.com/gabriela-doria) · Engenharia Ambiental, Poli-USP

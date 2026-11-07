@@ -130,4 +130,4 @@ This is a **showcase**, not a copy of the real system. See [PRIVACY.md](PRIVACY.
 
 ---
 
-Built by [Gabriela Dória](https://github.com/gabrielavsdoria) · Environmental Engineering, Poli-USP · code under [MIT](LICENSE) · text under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+Built by [Gabriela Dória](https://github.com/gabriela-doria) · Environmental Engineering, Poli-USP · code under [MIT](LICENSE) · text under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)

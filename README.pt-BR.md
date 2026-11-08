@@ -87,6 +87,7 @@ Os 45 princípios do sistema (seleção): [docs/principles.md](docs/principles.m
 | Organização | `nomear-e-arquivar` | Padrão de nomes e pastas (Johnny Decimal) e anti-duplicata. [Ver →](skills/nomear-e-arquivar/) |
 | Organização | `faxina-arquivos` | Faxina rápida e profunda de arquivos, sempre com proposta antes. [Ver →](skills/faxina-arquivos/) |
 | Organização | `encerrar-chat` | Fecha cada conversa registrando decisões no Diário e no Mapa. [Ver →](skills/encerrar-chat/) |
+| Segurança | `revisar-seguranca` | Revisão de segurança antes de publicar, instalar peça de terceiros ou dar permissão a um agente: avisos de uma linha, checklists, varredura do histórico do git e passo a passo de incidente. [Ver →](skills/revisar-seguranca/) |
 | Comunicação | `escrever-no-meu-estilo` | Rascunha mensagens no meu estilo a partir de um perfil de escrita. |
 
 ## 5. Resultados (out/2026)
@@ -119,7 +120,7 @@ Linha do tempo: organização do Drive com IA desde set/2026 · registro do sist
 | Pasta | O que é |
 |---|---|
 | [`docs/case-study.pt-BR.md`](docs/case-study.pt-BR.md) | O caso completo: problema, desenho, um dia e uma semana, governança, resultados, aprendizados, próximos passos |
-| [`skills/`](skills/) | 7 skills (versões públicas), cada uma abrindo com o que ela mostra |
+| [`skills/`](skills/) | 8 skills (versões públicas), cada uma abrindo com o que ela mostra |
 | [`apps-script/`](apps-script/) | 4 módulos em Google Apps Script: vigia de agenda, árvore do Drive, módulo do Gmail, app pessoal v0.2 |
 | [`templates/`](templates/) | Esquema do Mapa do Sistema, formato da linha do Diário, nomes de arquivos e pastas |
 | [`docs/`](docs/) | Arquitetura, princípios, decisões, aprendizados sobre as ferramentas |

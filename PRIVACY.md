@@ -27,5 +27,6 @@ Regra do sistema que vale aqui também (P7): **conteúdo de saúde e de autoconh
 | `templates/mapa-schema.md` | Todos os dados reais do Mapa | só o formato é publicado, com 2 ou 3 linhas fictícias |
 | `docs/lessons.md` | Aprendizados ligados a conversas pessoais, aparelhos, senhas e nomes | ficaram só os limites das ferramentas |
 | `docs/case-study*.md` | Saúde, família, lugares e terceiros | os números vêm do Mapa e dos registros, sem nenhum dado pessoal por trás |
+| Skill `revisar-seguranca` (publicada em 08/11/2026) | Nome do sistema e das peças, serviços que uso, ferramentas instaladas, referências a arquivos privados e aprendizados ligados à minha vida | a skill mostra o método; o mapa das peças fica privado |
 
 *This repository is a showcase. Health, family and third-party data, addresses, file IDs, people's names and real hiring statuses were removed or replaced with fictional examples. In the skills and scripts published on Oct 29, 2026, IDs now come from script properties, real senders, companies, courses and places became generic patterns, and nothing health-related was kept.*

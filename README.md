@@ -87,6 +87,7 @@ Selected principles out of 45: [docs/principles.md](docs/principles.md). Dated d
 | Organization | `nomear-e-arquivar` | File naming and folder standard (Johnny Decimal) with duplicate prevention. [See →](skills/nomear-e-arquivar/) |
 | Organization | `faxina-arquivos` | Quick and deep file clean-ups, always proposing first. [See →](skills/faxina-arquivos/) |
 | Organization | `encerrar-chat` | Closes each conversation by logging decisions to the log and the Map. [See →](skills/encerrar-chat/) |
+| Security | `revisar-seguranca` | Security review before publishing, installing third-party pieces or giving an agent permissions: one-line warnings, checklists, a git-history scan and an incident playbook. [See →](skills/revisar-seguranca/) |
 | Communication | `escrever-no-meu-estilo` | Drafts messages in my voice from a writing profile. |
 
 ## 5. Results (Oct 2026)
@@ -119,7 +120,7 @@ Timeline: AI-assisted Drive organization since Sep 2026 · system log since Oct 
 | Folder | What it is |
 |---|---|
 | [`docs/case-study.md`](docs/case-study.md) | The full case: problem, design, a day and a week, governance, results, lessons, next steps |
-| [`skills/`](skills/) | 7 skills (public versions), each opening with what it shows |
+| [`skills/`](skills/) | 8 skills (public versions), each opening with what it shows |
 | [`apps-script/`](apps-script/) | 4 Google Apps Script modules: calendar watcher, Drive tree, Gmail module, personal app v0.2 |
 | [`templates/`](templates/) | System Map schema, log-line format, file and folder naming |
 | [`docs/`](docs/) | Architecture, principles, decisions, tool lessons |

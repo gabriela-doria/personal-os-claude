@@ -8,9 +8,9 @@
 
 ## 1. Problema
 
-Em outubro de 2026 eu era estudante de engenharia ambiental e tinha, ao mesmo tempo: disciplinas com materiais espalhados entre Moodle, Google Classroom e e-mail; mais de 12 processos seletivos de estágio em portais diferentes, cada um com etapas e prazos próprios; um projeto de extensão; e os compromissos pessoais de sempre.
+Em outubro de 2026 eu era estudante de engenharia ambiental e tinha, ao mesmo tempo: disciplinas com materiais espalhados entre Moodle, Google Classroom e e-mail; processos seletivos de estágio em portais diferentes, cada um com etapas e prazos próprios; um projeto de extensão; e os compromissos pessoais de sempre.
 
-Cada tarefa era factível. O gargalo era **coordenar**: saber o que vencia primeiro, onde estava cada arquivo, o que priorizar e não deixar nada cair entre uma ferramenta e outra. Eu também queria apoio para as funções executivas (planejar, começar, manter o foco) sem depender de força de vontade.
+Cada tarefa era factível. O gargalo era **coordenar**: saber o que vencia primeiro, onde estava cada arquivo, o que priorizar e não deixar nada cair entre uma ferramenta e outra. Eu também queria otimizar o uso do meu tempo e automatizar as etapas repetitivas (entrar no sistema, baixar, nomear, arquivar, atualizar a agenda), para que a atenção fique no trabalho que pede julgamento.
 
 A primeira tentativa, deixar a IA ajudar caso a caso em chats separados, criou outro problema: regras repetidas em vários lugares ficavam diferentes, tarefas agendadas falhavam sozinhas quando precisavam de login, e ninguém (nem eu) conseguia dizer do que o sistema era feito.
 
@@ -61,7 +61,7 @@ Três escolhas de desenho moldaram o resto:
 
 ## 5. Resultados (outubro de 2026)
 
-Todos os números foram contados em 29/10/2026, no banco do Mapa do Sistema e nos registros de execução. Nenhum é estimativa.
+Todos os números foram contados em 29/10/2026, no banco do Mapa do Sistema e nos registros de execução. Nenhum número da tabela é estimativa.
 
 | O quê | Número | Fonte |
 |---|---|---|
@@ -75,8 +75,12 @@ Todos os números foram contados em 29/10/2026, no banco do Mapa do Sistema e no
 | E-mails arquivados na 1ª rodada do módulo do Gmail | **273**, com 7 rótulos (nada enviado, encaminhado ou apagado) | registro do Apps Script |
 | Arquivos de disciplinas renomeados para o padrão | **163** (13/10) | manifesto do Moodle |
 | Pastas do Drive na árvore | **160** (21/10) | registro do Apps Script |
-| Processos seletivos priorizados na 1ª rodada do radar | **12** | planilha do radar |
 | Decisão do app pessoal | **115** fontes; 5 opções com nota (web app em Apps Script 25, AppSheet 23, PWA local 23, Firebase 19, página do Claude 16) | decisão 0004 |
+
+### Tempo e prazos (estimativas, separadas das contagens acima)
+
+- `moodle-upload`: ≈10 min poupados por aula por semana (login, abrir arquivos, nomear e arquivar) × 8 aulas = **≈80 min/semana**, ≈20 h num semestre de 15 semanas.
+- `moodle-upload` + atualização da agenda, planejamento semanal, resumo da manhã e o Apps Script que atualiza a agenda a partir dos e-mails: **≈30% mais atividades e estudos entregues no prazo**, por autoavaliação; ainda sem medição com linha de base.
 
 Linha do tempo: organização do Drive com IA desde set/2026 · Diário desde 05/10 · Mapa com banco de dados desde 21/10.
 

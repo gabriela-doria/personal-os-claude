@@ -2,7 +2,7 @@
 
 **English** · [Português](README.pt-BR.md)
 
-> How an engineering student juggling classes, a university extension project and 12+ internship hiring processes started coordinating everything with AI agents, while keeping every decision in her own hands.
+> How an engineering student juggling classes, a university extension project and an internship search started coordinating everything with AI agents, while keeping every decision in her own hands.
 
 ---
 
@@ -11,10 +11,10 @@
 In October 2026 I was handling, at the same time:
 
 - engineering classes at Poli-USP, with materials scattered across Moodle, Google Classroom and email;
-- 12+ internship hiring processes, each on a different portal (Gupy, Cia de Talentos, Kolab, JobConvo…), with its own stages and deadlines;
+- internship hiring processes, each on a different portal (Gupy, Cia de Talentos, Kolab, JobConvo…), with its own stages and deadlines;
 - an extension project, routines and personal commitments.
 
-The bottleneck wasn't doing each task. It was **coordination**: knowing what's due first, where each file lives, what to prioritize, and not letting things fall between systems. I also wanted support for executive functions (planning, starting, staying focused) without relying on willpower alone.
+The bottleneck wasn't doing each task. It was **coordination**: knowing what's due first, where each file lives, what to prioritize, and not letting things fall between systems. I also wanted to make better use of my time and automate the repetitive steps (logging in, downloading, naming, filing, updating the calendar), so my attention goes to the work that needs judgment.
 
 ## 2. The solution
 
@@ -105,9 +105,15 @@ Counted on Oct 29, 2026, from the System Map and execution logs.
 | Emails archived on the Gmail script's first run (never sends, forwards or deletes) | 273 |
 | Moodle files renamed to the standard | 163 |
 | Versions of the Moodle collection skill | 13 |
-| Hiring processes ranked on the radar's first run | 12 |
 
 Timeline: AI-assisted Drive organization since Sep 2026 · system log since Oct 5, 2026 · Map with database since Oct 21, 2026.
+
+### Time and deadlines (my estimates)
+
+These two figures are estimates, not counts, so they are kept apart from the table above.
+
+- **Time saved by `moodle-upload`:** about 10 minutes per class per week (logging in to Moodle, opening the files, naming and filing them). With 8 classes a week, that is **≈80 minutes a week**, or ≈20 hours over a 15-week semester.
+- **On-time delivery:** after combining `moodle-upload` (with its calendar update), the weekly plan, the morning brief and the Apps Script that updates the calendar from emails, I estimate a **≈30% increase in assignments and study delivered on time**. This is a self-assessment; I have not yet measured it against a before-and-after baseline.
 
 ## 6. What I learned
 

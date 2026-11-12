@@ -4,7 +4,7 @@ Agente que transforma uma busca de estágio caótica (vários portais, e-mails, 
 
 ## Problema
 
-Mais de 12 processos seletivos ao mesmo tempo, cada um num portal. Sem critério, a tendência é aplicar para tudo e se preparar mal para o que importa.
+Vários processos seletivos ao mesmo tempo, cada um num portal. Sem critério, a tendência é aplicar para tudo e se preparar mal para o que importa.
 
 ## Como funciona
 

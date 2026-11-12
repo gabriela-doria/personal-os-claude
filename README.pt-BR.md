@@ -2,7 +2,7 @@
 
 [English](README.md) · **Português**
 
-> Como uma estudante de engenharia com faculdade, extensão e mais de 12 processos seletivos ao mesmo tempo passou a coordenar tudo com agentes de IA, sem perder o controle das decisões.
+> Como uma estudante de engenharia com faculdade, extensão e busca de estágio ao mesmo tempo passou a coordenar tudo com agentes de IA, sem perder o controle das decisões.
 
 ---
 
@@ -11,10 +11,10 @@
 Em out/2026 eu tinha, ao mesmo tempo:
 
 - disciplinas da Poli com materiais espalhados entre Moodle, Classroom e e-mail;
-- mais de 12 processos seletivos de estágio, cada um num portal (Gupy, Cia de Talentos, Kolab, JobConvo…), com etapas e prazos próprios;
+- processos seletivos de estágio, cada um num portal (Gupy, Cia de Talentos, Kolab, JobConvo…), com etapas e prazos próprios;
 - projeto de extensão, rotina e compromissos pessoais.
 
-O gargalo não era fazer cada tarefa. Era **coordenar**: saber o que vence primeiro, onde está cada arquivo, o que priorizar e não deixar nada cair entre um sistema e outro. Somado a isso, eu queria apoio para as funções executivas (planejar, começar, manter o foco) sem depender só de força de vontade.
+O gargalo não era fazer cada tarefa. Era **coordenar**: saber o que vence primeiro, onde está cada arquivo, o que priorizar e não deixar nada cair entre um sistema e outro. Somado a isso, eu queria otimizar o uso do meu tempo e automatizar as etapas repetitivas (entrar no sistema, baixar, nomear, arquivar, atualizar a agenda), para que a atenção fique no trabalho que pede julgamento.
 
 ## 2. A solução
 
@@ -105,9 +105,15 @@ Números contados em 29/10/2026, a partir do Mapa do Sistema e dos registros de 
 | E-mails arquivados na 1ª rodada do script de Gmail (sem enviar, encaminhar ou apagar nada) | 273 |
 | Arquivos do Moodle renomeados para o padrão | 163 |
 | Versões da skill de coleta do Moodle | 13 |
-| Processos seletivos priorizados na 1ª rodada do radar | 12 |
 
 Linha do tempo: organização do Drive com IA desde set/2026 · registro do sistema desde 05/10/2026 · Mapa com banco de dados desde 21/10/2026.
+
+### Tempo e prazos (estimativas minhas)
+
+Estes dois números são estimativas, não contagens, por isso ficam fora da tabela acima.
+
+- **Tempo poupado pela `moodle-upload`:** cerca de 10 minutos por aula por semana (entrar no Moodle, abrir os arquivos, nomear e arquivar). Com 8 aulas por semana, são **≈80 minutos por semana**, ou ≈20 horas num semestre de 15 semanas.
+- **Entregas no prazo:** depois de juntar a `moodle-upload` (com a atualização da agenda), o planejamento semanal, o resumo da manhã e o Apps Script que atualiza a agenda a partir dos e-mails, estimo um **aumento de ≈30% nas atividades e estudos entregues no prazo**. É uma autoavaliação; ainda não medi com uma linha de base de antes e depois.
 
 ## 6. O que aprendi
 

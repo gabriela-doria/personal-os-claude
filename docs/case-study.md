@@ -8,9 +8,9 @@
 
 ## 1. Problem
 
-In October 2026 I was an environmental engineering student juggling, at the same time, classes with materials spread across Moodle, Google Classroom and email; 12+ internship hiring processes on different portals, each with its own stages and deadlines; a university extension project; and the usual personal commitments.
+In October 2026 I was an environmental engineering student juggling, at the same time, classes with materials spread across Moodle, Google Classroom and email; internship hiring processes on different portals, each with its own stages and deadlines; a university extension project; and the usual personal commitments.
 
-Each task was doable. The bottleneck was **coordination**: knowing what was due first, where each file lived, what to prioritize, and not letting things fall between tools. I also wanted support for executive functions (planning, starting, staying focused) that didn't depend on willpower.
+Each task was doable. The bottleneck was **coordination**: knowing what was due first, where each file lived, what to prioritize, and not letting things fall between tools. I also wanted to make better use of my time and automate the repetitive steps (logging in, downloading, naming, filing, updating the calendar), so my attention goes to the work that needs judgment.
 
 A first attempt, letting AI help ad hoc in separate chats, created a new problem: rules repeated in many places drifted apart, scheduled jobs failed silently when they needed a login, and nobody (including me) could say what the system was made of.
 
@@ -61,7 +61,7 @@ Three design choices shaped everything else:
 
 ## 5. Results (October 2026)
 
-All numbers were counted on Oct 29, 2026, from the System Map database and the execution logs. None are estimates.
+All numbers were counted on Oct 29, 2026, from the System Map database and the execution logs. None of the numbers in the table are estimates.
 
 | What | Count | Source |
 |---|---|---|
@@ -75,8 +75,12 @@ All numbers were counted on Oct 29, 2026, from the System Map database and the e
 | Emails archived on the Gmail module's first run | **273**, with 7 labels (nothing sent, forwarded or deleted) | Apps Script log |
 | Course files renamed to the naming standard | **163** (Oct 13) | Moodle manifest |
 | Drive folders recorded in the tree | **160** (Oct 21) | Apps Script log |
-| Hiring processes ranked on the radar's first run | **12** | radar sheet |
 | Personal app decision | **115** sources reviewed; 5 options scored (Apps Script web app 25, AppSheet 23, local PWA 23, Firebase 19, Claude page 16) | decision 0004 |
+
+### Time and deadlines (estimates, kept apart from the counts above)
+
+- `moodle-upload`: ≈10 min saved per class per week (login, opening files, naming and filing) × 8 classes = **≈80 min/week**, ≈20 h per 15-week semester.
+- `moodle-upload` + calendar update, weekly plan, morning brief and the Apps Script that updates the calendar from emails: **≈30% more assignments and study delivered on time**, by my own assessment; not yet measured against a baseline.
 
 Timeline: AI-assisted Drive organization since Sep 2026 · system log since Oct 5 · Map as a database since Oct 21.
 

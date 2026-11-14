@@ -1,140 +1,148 @@
-# Personal OS with Claude
+# Personal OS com Claude
 
-**English** · [Português](README.pt-BR.md)
+**Português** · [English](README.en.md)
 
-> How an engineering student juggling classes, a university extension project and an internship search started coordinating everything with AI agents, while keeping every decision in her own hands.
+> Como uma estudante de engenharia com faculdade, extensão e busca de estágio ao mesmo tempo passou a coordenar tudo com agentes de IA, sem perder o controle das decisões.
+
+## Em 1 minuto
+
+- **O problema:** faculdade, extensão e busca de estágio ao mesmo tempo, com informação espalhada em vários sistemas.
+- **O que eu fiz:** 16 agentes de IA (skills do Claude) que leem as mesmas fontes e me entregam propostas para aprovar. O destaque é o [radar de estágios](skills/radar-estagios/): ele lê portais e e-mails, dá uma nota de 0 a 100 a cada vaga e monta a fila da semana.
+- **O resultado (contado em 29/10/2026):** 273 e-mails arquivados e 163 arquivos renomeados para o padrão, sem nada enviado ou apagado sem o meu ok. Estimo cerca de 80 minutos poupados por semana (estimativa minha, não contagem).
+- **Como rodar:** `python skills/radar-estagios/score.py skills/radar-estagios/exemplo_vagas.csv` mostra a nota e a fila com dados fictícios.
+- **Limites:** este repositório é uma vitrine, com versões públicas e sem dados pessoais. O sistema real depende das minhas contas e não roda fora delas. Veja [PRIVACY.md](PRIVACY.md).
 
 ---
 
-## 1. The problem
+## 1. O problema
 
-In October 2026 I was handling, at the same time:
+Em out/2026 eu tinha, ao mesmo tempo:
 
-- engineering classes at Poli-USP, with materials scattered across Moodle, Google Classroom and email;
-- internship hiring processes, each on a different portal (Gupy, Cia de Talentos, Kolab, JobConvo…), with its own stages and deadlines;
-- an extension project, routines and personal commitments.
+- disciplinas da Poli com materiais espalhados entre Moodle, Classroom e e-mail;
+- processos seletivos de estágio, cada um num portal (Gupy, Cia de Talentos, Kolab, JobConvo…), com etapas e prazos próprios;
+- projeto de extensão, rotina e compromissos pessoais.
 
-The bottleneck wasn't doing each task. It was **coordination**: knowing what's due first, where each file lives, what to prioritize, and not letting things fall between systems. I also wanted to make better use of my time and automate the repetitive steps (logging in, downloading, naming, filing, updating the calendar), so my attention goes to the work that needs judgment.
+O gargalo não era fazer cada tarefa. Era **coordenar**: saber o que vence primeiro, onde está cada arquivo, o que priorizar e não deixar nada cair entre um sistema e outro. Somado a isso, eu queria otimizar o uso do meu tempo e automatizar as etapas repetitivas (entrar no sistema, baixar, nomear, arquivar, atualizar a agenda), para que a atenção fique no trabalho que pede julgamento.
 
-## 2. The solution
+## 2. A solução
 
-A set of **specialized agents (Claude skills)** that read the same sources, write each piece of information in exactly one place, and hand me **proposals to approve**.
+Um conjunto de **agentes especializados (skills do Claude)** que leem as mesmas fontes, escrevem cada informação num lugar só e me entregam **propostas para validar**.
 
 ```mermaid
 flowchart LR
-    subgraph Sources
+    subgraph Fontes
         G[Gmail]
-        A[Google Calendar]
+        A[Google Agenda]
         D[Drive / Docs / Sheets]
-        M[Moodle & Classroom]
-        P[Job portals]
+        M[Moodle e Classroom]
+        P[Portais de vagas]
     end
-    subgraph Agents["Agents (skills)"]
-        R[Internship radar]
-        PP[Hiring-stage prep]
-        RM[Morning brief]
-        PS[Weekly plan]
-        MO[Moodle → Drive + Calendar]
+    subgraph Agentes["Agentes (skills)"]
+        R[Radar de estágios]
+        PP[Preparar processo seletivo]
+        RM[Resumo da manhã]
+        PS[Proposta da semana]
+        MO[Moodle → Drive + Agenda]
         OUT[...]
     end
-    subgraph Outputs
-        S1[Priority spreadsheet]
-        S2[Calendar in 25-min blocks]
-        S3[Prep docs]
-        S4[Daily dashboard]
+    subgraph Saidas["Saídas"]
+        S1[Planilha de prioridade]
+        S2[Agenda em blocos de 25 min]
+        S3[Docs de preparação]
+        S4[Painel diário]
     end
-    Sources --> Agents --> Outputs
-    Agents <--> MAP[(System Map database)]
-    Agents --> LOG[System log]
-    ME((Me)) -- approves --> Outputs
+    Fontes --> Agentes --> Saidas
+    Agentes <--> MAPA[(Mapa do Sistema)]
+    Agentes --> DIARIO[Diário do sistema]
+    EU((Eu)) -- valida --> Saidas
 ```
 
-More in [docs/architecture.md](docs/architecture.md).
+Detalhes em [docs/architecture.md](docs/architecture.md).
 
-### Scheduled routines
+### Rotinas agendadas
 
-| Agent | Runs | Delivers |
+| Agente | Quando roda | O que entrega |
 |---|---|---|
-| Morning brief | Mon–Fri, 6 am | Daily dashboard: calendar, emails that need action, deadlines, suggested focus blocks |
-| Weekly plan | Sunday, 6 pm | Calendar triage and a 2-week proposal for me to approve |
-| Internship radar | Sunday & Wednesday (I trigger it) | Portal sweep, spreadsheet update, priority queue |
+| Resumo da manhã | seg a sex, 6h | Painel do dia: agenda, e-mails que pedem ação, prazos, blocos de foco sugeridos |
+| Proposta da semana | domingo, 18h | Triagem da agenda e proposta das próximas 2 semanas para eu validar |
+| Radar de estágios | domingo e quarta (eu disparo) | Varredura dos portais, atualização da planilha e fila de prioridade |
 
-## 3. Design principles
+## 3. Princípios de desenho
 
-1. **One fact, one place.** Every piece of data has an owner (a sheet, a doc, the calendar). Agents read the source instead of copying each other's rules.
-2. **Human in the loop.** Suggestions land on a separate calendar and only become commitments after I approve. No agent sends email, applies to a job or deletes a file on its own.
-3. **Explicit limits.** At most 3 new applications per week and up to 2 hours of career work per weekday, so the tool doesn't become the overload.
-4. **25-minute focus blocks.** One focus per block, with the first step written in the event description.
-5. **Security.** Agents never type passwords; expired login or captcha = skip and report.
-6. **Versioned and logged.** Every skill carries a version and changelog. Every change is recorded in the system log and in the **System Map**, a database of the system's parts and how they connect.
+1. **Uma informação, um lugar.** Cada dado tem um dono (uma planilha, um doc, a agenda). Os agentes leem a fonte, não copiam regras entre si.
+2. **Humano no loop.** Sugestões nascem numa agenda separada e só viram compromisso depois do meu ok. Nenhum agente envia e-mail, se inscreve em vaga ou apaga arquivo sozinho.
+3. **Limites explícitos.** No máximo 3 inscrições novas por semana e até 2h de carreira por dia útil, para a ferramenta não virar sobrecarga.
+4. **Foco em blocos de 25 min.** Um foco por bloco, com o primeiro passo escrito na descrição do evento.
+5. **Segurança.** Agentes nunca digitam senha; login caído ou captcha = pular e avisar.
+6. **Versionado e registrado.** Cada skill tem versão e changelog no cabeçalho. Toda mudança fica no Diário e no **Mapa do Sistema**, um banco de dados com as peças do sistema e como se ligam.
 
-Selected principles out of 45: [docs/principles.md](docs/principles.md). Dated decisions with context: [docs/decisions/](docs/decisions/).
+Os 45 princípios do sistema (seleção): [docs/principles.md](docs/principles.md). Decisões com data e contexto: [docs/decisions/](docs/decisions/).
 
-## 4. Agent catalog (selection)
+## 4. Catálogo de agentes (seleção)
 
-| Area | Skill | What it does |
+| Área | Skill | O que faz |
 |---|---|---|
-| Career | `radar-estagios` | Sweeps portals and Gmail, updates the sheet, computes a 0–100 priority score and proposes the week's blocks. [See →](skills/radar-estagios/) |
-| Career | `preparar-processo-seletivo` | For each hiring stage (test, case, panel, interview): researches company, market and people, builds a block-by-block plan, logs lessons afterwards. [See →](skills/preparar-processo-seletivo/) |
-| Routine | `resumo-da-manha` | Daily dashboard + short message. [See →](skills/resumo-da-manha/) |
-| Routine | `proposta-da-semana` | Weekly triage and 2-week proposal. [See →](skills/proposta-da-semana/) |
-| Routine | `marcar-compromisso` | Calendar event in the right calendar, with color, address, commute and a ready-to-send message. |
-| Routine | `triagem-tarefas` | Sorts tasks into do, schedule, delegate or delete. |
-| Routine | `triagem-email` | Labels and senders, integrated with a Google Apps Script. |
-| University | `moodle-upload` | Downloads course materials, files them and puts deadlines and exams on the calendar. |
-| University | `plano-de-estudo-prova` | Exam study plan from past exams (topic frequency), with a focus page and timer. |
-| University | `modo-aula` | Quick help during class. |
-| Organization | `nomear-e-arquivar` | File naming and folder standard (Johnny Decimal) with duplicate prevention. [See →](skills/nomear-e-arquivar/) |
-| Organization | `faxina-arquivos` | Quick and deep file clean-ups, always proposing first. [See →](skills/faxina-arquivos/) |
-| Organization | `encerrar-chat` | Closes each conversation by logging decisions to the log and the Map. [See →](skills/encerrar-chat/) |
-| Security | `revisar-seguranca` | Security review before publishing, installing third-party pieces or giving an agent permissions: one-line warnings, checklists, a git-history scan and an incident playbook. [See →](skills/revisar-seguranca/) |
-| Communication | `escrever-no-meu-estilo` | Drafts messages in my voice from a writing profile. |
+| Carreira | `radar-estagios` | Varre portais e Gmail, atualiza a planilha, calcula a nota de prioridade e propõe os blocos da semana. [Ver →](skills/radar-estagios/) |
+| Carreira | `preparar-processo-seletivo` | Para cada etapa (teste, case, painel, entrevista): pesquisa empresa, mercado e pessoas, monta o plano em blocos e registra o aprendizado depois. [Ver →](skills/preparar-processo-seletivo/) |
+| Rotina | `resumo-da-manha` | Painel diário + mensagem curta. [Ver →](skills/resumo-da-manha/) |
+| Rotina | `proposta-da-semana` | Triagem e proposta de 2 semanas. [Ver →](skills/proposta-da-semana/) |
+| Rotina | `marcar-compromisso` | Evento na agenda certa, com cor, endereço, deslocamento e mensagem pronta. |
+| Rotina | `triagem-tarefas` | Classifica tarefas em fazer, agendar, delegar ou apagar. |
+| Rotina | `triagem-email` | Rótulos e remetentes, integrada a um script em Google Apps Script. |
+| Faculdade | `moodle-upload` | Baixa materiais do Moodle, organiza no drive e põe prazos e provas na agenda. |
+| Faculdade | `plano-de-estudo-prova` | Plano de estudo a partir de provas antigas (frequência de temas), com página de foco e timer. |
+| Faculdade | `modo-aula` | Ajuda rápida durante a aula. |
+| Organização | `nomear-e-arquivar` | Padrão de nomes e pastas (Johnny Decimal) e anti-duplicata. [Ver →](skills/nomear-e-arquivar/) |
+| Organização | `faxina-arquivos` | Faxina rápida e profunda de arquivos, sempre com proposta antes. [Ver →](skills/faxina-arquivos/) |
+| Organização | `encerrar-chat` | Fecha cada conversa registrando decisões no Diário e no Mapa. [Ver →](skills/encerrar-chat/) |
+| Segurança | `revisar-seguranca` | Revisão de segurança antes de publicar, instalar peça de terceiros ou dar permissão a um agente: avisos de uma linha, checklists, varredura do histórico do git e passo a passo de incidente. [Ver →](skills/revisar-seguranca/) |
+| Comunicação | `escrever-no-meu-estilo` | Rascunha mensagens no meu estilo a partir de um perfil de escrita. |
 
-## 5. Results (Oct 2026)
+## 5. Resultados (out/2026)
 
-Counted on Oct 29, 2026, from the System Map and execution logs.
+Números contados em 29/10/2026, a partir do Mapa do Sistema e dos registros de execução.
 
-| What | Count |
+| O quê | Número |
 |---|---|
-| Active custom skills | 16 |
-| Active scheduled tasks | 2 |
-| Parts registered in the System Map | 275 |
-| Changes logged in the Map (Oct 5–27) | 252 |
-| Improvement proposals, each with a mini-PRD (why, done-when, reversible, risk) | 101 |
-| Dated design principles | 45 |
-| Emails archived on the Gmail script's first run (never sends, forwards or deletes) | 273 |
-| Moodle files renamed to the standard | 163 |
-| Versions of the Moodle collection skill | 13 |
+| Skills próprias ativas | 16 |
+| Tarefas agendadas ativas | 2 |
+| Peças registradas no Mapa do Sistema | 275 |
+| Mudanças registradas no log do Mapa (05/10 a 27/10) | 252 |
+| Propostas de melhoria, cada uma com mini-PRD (porquê, pronto quando, reversível, risco) | 101 |
+| Princípios de desenho com data | 45 |
+| E-mails arquivados na 1ª rodada do script de Gmail (sem enviar, encaminhar ou apagar nada) | 273 |
+| Arquivos do Moodle renomeados para o padrão | 163 |
+| Versões da skill de coleta do Moodle | 13 |
 
-Timeline: AI-assisted Drive organization since Sep 2026 · system log since Oct 5, 2026 · Map with database since Oct 21, 2026.
+Linha do tempo: organização do Drive com IA desde set/2026 · registro do sistema desde 05/10/2026 · Mapa com banco de dados desde 21/10/2026.
 
-### Time and deadlines (my estimates)
+### Tempo e prazos (estimativas minhas)
 
-These two figures are estimates, not counts, so they are kept apart from the table above.
+Estes dois números são estimativas, não contagens, por isso ficam fora da tabela acima.
 
-- **Time saved by `moodle-upload`:** about 10 minutes per class per week (logging in to Moodle, opening the files, naming and filing them). With 8 classes a week, that is **≈80 minutes a week**, or ≈20 hours over a 15-week semester.
-- **On-time delivery:** after combining `moodle-upload` (with its calendar update), the weekly plan, the morning brief and the Apps Script that updates the calendar from emails, I estimate a **≈30% increase in assignments and study delivered on time**. This is a self-assessment; I have not yet measured it against a before-and-after baseline.
+- **Tempo poupado pela `moodle-upload`:** cerca de 10 minutos por aula por semana (entrar no Moodle, abrir os arquivos, nomear e arquivar). Com 8 aulas por semana, são **≈80 minutos por semana**, ou ≈20 horas num semestre de 15 semanas.
+- **Entregas no prazo:** depois de juntar a `moodle-upload` (com a atualização da agenda), o planejamento semanal, o resumo da manhã e o Apps Script que atualiza a agenda a partir dos e-mails, estimo um **aumento de ≈30% nas atividades e estudos entregues no prazo**. É uma autoavaliação; ainda não medi com uma linha de base de antes e depois.
 
-## 6. What I learned
+## 6. O que aprendi
 
-- **Good agents have small scopes.** Each skill owns one responsibility and reads the others as sources instead of copying their rules.
-- **Data needs an owner.** Only one agent writes to each place (the radar writes the sheet; the morning brief only reads it). No duplicate versions of the truth.
-- **Automation can overload too.** The sheet holds the backlog; the calendar shows little. Limits protect time, not just organize it.
+- **Agente bom tem escopo pequeno.** Cada skill tem uma responsabilidade e lê as outras como fonte, em vez de copiar as regras delas. Mudar uma regra não exige mexer em cinco lugares.
+- **O dado precisa de dono.** Só um agente escreve em cada lugar (o radar escreve na planilha; o resumo da manhã só lê). Isso evita duas versões da mesma informação.
+- **Automação também sobrecarrega.** A planilha segura o backlog e a agenda mostra pouco. Os limites protegem o tempo, não só organizam.
 
-## 7. What's in this repo
+## 7. O que tem neste repositório
 
-| Folder | What it is |
+| Pasta | O que é |
 |---|---|
-| [`docs/case-study.md`](docs/case-study.md) | The full case: problem, design, a day and a week, governance, results, lessons, next steps |
-| [`skills/`](skills/) | 8 skills (public versions), each opening with what it shows |
-| [`apps-script/`](apps-script/) | 4 Google Apps Script modules: calendar watcher, Drive tree, Gmail module, personal app v0.2 |
-| [`templates/`](templates/) | System Map schema, log-line format, file and folder naming |
-| [`docs/`](docs/) | Architecture, principles, decisions, tool lessons |
+| [`docs/case-study.pt-BR.md`](docs/case-study.pt-BR.md) | O caso completo: problema, desenho, um dia e uma semana, governança, resultados, aprendizados, próximos passos |
+| [`skills/`](skills/) | 8 skills (versões públicas), cada uma abrindo com o que ela mostra |
+| [`apps-script/`](apps-script/) | 4 módulos em Google Apps Script: vigia de agenda, árvore do Drive, módulo do Gmail, app pessoal v0.2 |
+| [`templates/`](templates/) | Esquema do Mapa do Sistema, formato da linha do Diário, nomes de arquivos e pastas |
+| [`docs/`](docs/) | Arquitetura, princípios, decisões, aprendizados sobre as ferramentas |
 
-## 8. Privacy
+## 8. Privacidade
 
-This is a **showcase**, not a copy of the real system. See [PRIVACY.md](PRIVACY.md).
+Esta é uma **vitrine**, não uma cópia do sistema real. Veja [PRIVACY.md](PRIVACY.md).
 
 ---
 
-Built by [Gabriela Dória](https://github.com/gabriela-doria) · Environmental Engineering, Poli-USP · code under [MIT](LICENSE) · text under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+Feito por [Gabriela Dória](https://github.com/gabriela-doria) · Engenharia Ambiental, Poli-USP · Código sob licença [MIT](LICENSE) · textos sob [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.pt_BR)
